@@ -25,14 +25,15 @@
             ['OS == "linux"', {
                 'link_settings': {
                     'libraries': [
-                        '-lshare',
+                        '-L<!(pwd)/../version-2',
+                        '-lshare.1.1', # Linux is lazy by default
                     ]
                 }
             }],
             ['OS == "mac"', {
                 'link_settings': {
                     'libraries': [
-                        '-L/Users/emilbay/development/null/so-version-example/version-2',
+                        '-L<!(pwd)/../version-2',
                         '-lazy-lshare.1.1',
                     ]
                 }

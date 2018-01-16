@@ -1,0 +1,29 @@
+all: version1 version2 dependent
+
+version1:
+	cd version-1 && gcc -shared \
+				-fPIC \
+        libshare.c \
+				-Wl,-soname,libshare.so.1.0 \
+        -o libshare.so.1.0
+	cd version-2 && ln -s libshare.so.1.0 libshare.so.1 && ln -s libshare.so.1.0 libshare.so
+	cd version-1 && ../node_modules/.bin/node-gyp rebuild
+	cp version-1/libshare.so.* version-1/build/Release/
+	node -p 'require("./version-1")'
+
+version2:
+	cd version-2 && gcc -shared \
+				-fPIC \
+        libshare.c \
+				-Wl,-soname,libshare.so.1.1 \
+        -o libshare.so.1.1
+	cd version-2 && ln -s libshare.so.1.1 libshare.so.1 && ln -s libshare.so.1.1 libshare.so
+	cd version-2 && ../node_modules/.bin/node-gyp rebuild
+	cp version-2/libshare.so.* version-2/build/Release/
+	node -p 'require("./version-2")'
+
+dependent:
+	cd dependent && ../node_modules/.bin/node-gyp rebuild
+
+clean:
+	rm -rf dependent/build version-1/libshare.1.0.dylib version-1/build version-2/libshare.1.1.dylib version-2/build

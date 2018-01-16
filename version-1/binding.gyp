@@ -25,6 +25,8 @@
             ['OS == "linux"', {
                 'link_settings': {
                     'libraries': [
+                        "-Wl,-rpath=\\$$ORIGIN"
+                        '-L<!(pwd)',
                         '-lshare',
                     ]
                 }

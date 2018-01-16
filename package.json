@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "node-gyp": "^3.6.2",
+    "node-gyp-build": "^3.2.2"
+  }
+}

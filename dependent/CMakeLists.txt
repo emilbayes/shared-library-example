@@ -6,6 +6,8 @@ if (APPLE)
   SET(LINK_FLAGS "-L${CMAKE_SOURCE_DIR}/../version-2/build/Release -lazy-lshare")
 elseif(UNIX)
   SET(LINK_FLAGS "-L${CMAKE_SOURCE_DIR}/../version-2/build/Release -z lazy -lshare")
+elseif(WIN32)
+  SET(LINK_FLAGS "${CMAKE_SOURCE_DIR}/../version-2/build/Release/share.lib /DELAYLOAD:share.dll")
 endif()
 
 file(GLOB SOURCE_FILES binding.cpp libshare.h)

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "cmake-js": "^3.6.1",
+    "nan": "^2.8.0"
+  },
+  "scripts": {
+    "install": "cmake-js compile"
+  }
+}

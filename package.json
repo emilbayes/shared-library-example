@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cmake-js": "^3.6.1",
     "nan": "^2.8.0",
     "node-gyp": "^3.6.2",
     "node-gyp-build": "^3.2.2"
